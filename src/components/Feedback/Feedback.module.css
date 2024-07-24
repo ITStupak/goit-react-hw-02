@@ -1,0 +1,8 @@
+.flist {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.fitem {
+  letter-spacing: 0.02em;
+}

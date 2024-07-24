@@ -1,0 +1,10 @@
+.olist {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 30px;
+}
+.btn {
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+}
