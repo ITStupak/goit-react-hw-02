@@ -1,15 +1,13 @@
-import clsx from "clsx";
 import css from "../Feedback/Feedback.module.css";
-function Feedback() {
+
+export default function Feedback({ good, netural, bad, total, positive }) {
   return (
-    <ul className={clsx(css.flist)}>
-      <li className={clsx(css.fitem)}>Good:</li>
-      <li className={clsx(css.fitem)}>Neutral:</li>
-      <li className={clsx(css.fitem)}>Bad:</li>
-      <li className={clsx(css.fitem)}>Total:</li>
-      <li className={clsx(css.fitem)}>Positive:</li>
+    <ul className={css.flist}>
+      <li className={css.fitem}>Good: {good}</li>
+      <li className={css.fitem}>Netural: {netural}</li>
+      <li className={css.fitem}>Bad: {bad}</li>
+      <li className={css.fitem}>Total: {total}</li>
+      <li className={css.fitem}>Positive: {positive}%</li>
     </ul>
   );
 }
-
-export default Feedback;

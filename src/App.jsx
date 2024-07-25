@@ -6,24 +6,44 @@ import Options from "./components/Options/Options";
 import Feedback from "./components/Feedback/Feedback";
 import Notification from "./components/Notification/Notification";
 
-function App() {
+export default function App() {
   const [feedback, setFeedback] = useState({
     good: 0,
     netural: 0,
     bad: 0,
   });
-  const handleClick = () => {
-    setFeedback(feedback + 1);
+
+  const onFeedbackAdd = (feedbackType) => {
+    // console.log("click", feedbackType);
+    setFeedback({ ...feedback, [feedbackType]: feedback[feedbackType] + 1 });
   };
-  const totalFeedback = feedback[0] + feedback[1] + feedback[2];
+
+  const onFeedbackReset = () => {
+    setFeedback({ good: 0, netural: 0, bad: 0 });
+  };
+
+  const total = feedback.good + feedback.netural + feedback.bad;
+  const positive = Math.round((feedback.good / total) * 100);
 
   return (
     <>
       <Description />
-      <Options onClick={handleClick} />
-      {totalFeedback > 0 ? <Feedback /> : <Notification />}
+      <Options
+        onFeedbackAdd={onFeedbackAdd}
+        onFeedbackReset={onFeedbackReset}
+        total={total}
+      />
+      {total > 0 ? (
+        <Feedback
+          good={feedback.good}
+          netural={feedback.netural}
+          bad={feedback.bad}
+          total={total}
+          positive={positive}
+        />
+      ) : (
+        <Notification />
+      )}
     </>
   );
 }
-
-export default App;

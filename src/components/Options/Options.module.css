@@ -1,5 +1,7 @@
 .olist {
   display: flex;
+  /* flex-wrap: wrap;
+  max-width: 300px; */
   gap: 10px;
   margin-bottom: 30px;
 }
