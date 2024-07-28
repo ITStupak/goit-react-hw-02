@@ -1,12 +1,12 @@
 import css from "../Options/Options.module.css";
 
-export default function Options({ onFeedbackAdd, onFeedbackReset, total }) {
+export default function Options({ updateFeedback, onFeedbackReset, total }) {
   return (
     <div className={css.olist}>
       <button
         type="button"
         onClick={() => {
-          onFeedbackAdd("good");
+          updateFeedback("good");
         }}
         className={css.btn}
       >
@@ -15,7 +15,7 @@ export default function Options({ onFeedbackAdd, onFeedbackReset, total }) {
       <button
         type="button"
         onClick={() => {
-          onFeedbackAdd("neutral");
+          updateFeedback("neutral");
         }}
         className={css.btn}
       >
@@ -24,7 +24,7 @@ export default function Options({ onFeedbackAdd, onFeedbackReset, total }) {
       <button
         type="button"
         onClick={() => {
-          onFeedbackAdd("bad");
+          updateFeedback("bad");
         }}
         className={css.btn}
       >

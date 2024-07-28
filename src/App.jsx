@@ -16,7 +16,7 @@ export default function App() {
     window.localStorage.setItem("feedbackValue", JSON.stringify(feedback));
   }, [feedback]);
 
-  const onFeedbackAdd = (feedbackType) => {
+  const updateFeedback = (feedbackType) => {
     setFeedback({ ...feedback, [feedbackType]: feedback[feedbackType] + 1 });
   };
 
@@ -24,23 +24,23 @@ export default function App() {
     setFeedback({ good: 0, neutral: 0, bad: 0 });
   };
 
-  const total = feedback.good + feedback.neutral + feedback.bad;
-  const positive = Math.round((feedback.good / total) * 100);
+  const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
+  const positive = Math.round((feedback.good / totalFeedback) * 100);
 
   return (
     <>
       <Description />
       <Options
-        onFeedbackAdd={onFeedbackAdd}
+        updateFeedback={updateFeedback}
         onFeedbackReset={onFeedbackReset}
-        total={total}
+        total={totalFeedback}
       />
-      {total > 0 ? (
+      {totalFeedback > 0 ? (
         <Feedback
           good={feedback.good}
           neutral={feedback.neutral}
           bad={feedback.bad}
-          total={total}
+          total={totalFeedback}
           positive={positive}
         />
       ) : (
