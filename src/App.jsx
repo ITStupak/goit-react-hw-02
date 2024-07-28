@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import "./index.css";
 import Description from "./components/Description/Description";
@@ -7,22 +7,24 @@ import Feedback from "./components/Feedback/Feedback";
 import Notification from "./components/Notification/Notification";
 
 export default function App() {
-  const [feedback, setFeedback] = useState({
-    good: 0,
-    netural: 0,
-    bad: 0,
+  const [feedback, setFeedback] = useState(() => {
+    const savedFeedback = window.localStorage.getItem("feedbackValue");
+    return JSON.parse(savedFeedback) ?? { good: 0, neutral: 0, bad: 0 };
   });
 
+  useEffect(() => {
+    window.localStorage.setItem("feedbackValue", JSON.stringify(feedback));
+  }, [feedback]);
+
   const onFeedbackAdd = (feedbackType) => {
-    // console.log("click", feedbackType);
     setFeedback({ ...feedback, [feedbackType]: feedback[feedbackType] + 1 });
   };
 
   const onFeedbackReset = () => {
-    setFeedback({ good: 0, netural: 0, bad: 0 });
+    setFeedback({ good: 0, neutral: 0, bad: 0 });
   };
 
-  const total = feedback.good + feedback.netural + feedback.bad;
+  const total = feedback.good + feedback.neutral + feedback.bad;
   const positive = Math.round((feedback.good / total) * 100);
 
   return (
@@ -36,7 +38,7 @@ export default function App() {
       {total > 0 ? (
         <Feedback
           good={feedback.good}
-          netural={feedback.netural}
+          neutral={feedback.neutral}
           bad={feedback.bad}
           total={total}
           positive={positive}

@@ -15,7 +15,7 @@ export default function Options({ onFeedbackAdd, onFeedbackReset, total }) {
       <button
         type="button"
         onClick={() => {
-          onFeedbackAdd("netural");
+          onFeedbackAdd("neutral");
         }}
         className={css.btn}
       >
