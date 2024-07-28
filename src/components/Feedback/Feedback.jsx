@@ -6,8 +6,8 @@ export default function Feedback({ good, neutral, bad, total, positive }) {
       <li className={css.fitem}>Good: {good}</li>
       <li className={css.fitem}>Neutral: {neutral}</li>
       <li className={css.fitem}>Bad: {bad}</li>
-      <li className={css.fitem}>Total: {total}</li>
-      <li className={css.fitem}>Positive: {positive}%</li>
+      <li className={css["fitem-strong"]}>Total: {total}</li>
+      <li className={css["fitem-strong"]}>Positive: {positive}%</li>
     </ul>
   );
 }

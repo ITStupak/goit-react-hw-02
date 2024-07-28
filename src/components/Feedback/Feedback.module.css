@@ -6,3 +6,6 @@
 .fitem {
   letter-spacing: 0.02em;
 }
+.fitem-strong {
+  font-weight: 700;
+}
